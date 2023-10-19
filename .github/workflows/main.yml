@@ -33,7 +33,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Azure Login
-        run: az login --service-principal --username ${{ secrets.AZURE_CLIENT_ID}} --password ${{ secrets.AZURE_TENANT_ID }} --tenant ${{ env.AZURE_SECRET_ID }}
+        run: az login --service-principal --username ${{ secrets.AZURE_CLIENT_ID}} --password ${{ secrets.AZURE_SECRET_ID }} --tenant ${{ secrets.AZURE_TENANT_ID }}
 
       - name: 'Get RG with powershell action'
         uses: azure/powershell@v1

@@ -1,0 +1,37 @@
+{
+    "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-18",
+
+    "name": "My-Project",
+
+    "features": {
+        "ghcr.io/devcontainers/features/azure-cli:1": {},
+        //"azure-cli": "latest",
+        "ghcr.io/devcontainers/features/terraform:1": {},
+        //"terraform": "latest",
+        //"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+        //"kubectl-helm-minikube": "latest",
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+       // "git": "latest",
+        "ghcr.io/devcontainers/features/sshd:1": {}
+       // "sshd": "latest"
+    },
+    "runArgs": ["--init", "--env-file",".devcontainer/devcontainer.dev.env"],
+    "remoteEnv": {
+		// Sets environment variables required for terrafom remote backend
+        "TF_B_SUBSCRIPTION_ID": "${containerEnv:TF_B_SUBSCRIPTION_ID}",
+		"TF_B_RESOURCE_GROUP" : "${containerEnv:TF_B_RESOURCE_GROUP}",
+		"TF_B_LOCATION": "${containerEnv:TF_B_LOCATION}",
+		"TF_B_STORAGE_ACCOUNT" : "${containerEnv:TF_B_STORAGE_ACCOUNT}",                
+		"TF_B_CONFIG_FILE_PATH" : "${containerEnv:TF_B_CONFIG_FILE_PATH}",
+        "TF_PLAN_VARIABLES_FILE_PATH" : "${containerEnv:TF_PLAN_VARIABLES_FILE_PATH}",
+        "TF_PR_SUBSCRIPTION_ID" : "${containerEnv:TF_PR_SUBSCRIPTION_ID}"
+	},
+    "customizations": {
+        "vscode": {
+            "extensions": ["dbaeumer.vscode-eslint"]
+        }
+    },
+    "postCreateCommand": "sudo chmod +x ./utils/*; sudo cp ./utils/* /usr/local/bin ",
+    "forwardPorts": [3000]
+}

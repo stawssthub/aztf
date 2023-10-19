@@ -1,0 +1,5 @@
+subscription_id      = "21d7caa7-7415-4ed9-9438-7c5fa559c951"
+resource_group_name  = "MY-RG"
+storage_account_name = "mytfsaa2"
+container_name       = "terraform"
+key                  = "dev.terraform.tfstate"
